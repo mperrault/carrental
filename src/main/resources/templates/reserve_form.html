@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Spring Boot Car Reservation System</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script>
+        $( function() {
+            $( "#startdate" ).datepicker({minDate: new Date(), dateFormat: 'yy-mm-dd'});
+            $( "#starttime" ).timepicker({timeFormat: 'HH:mm'});
+            $( "#enddate" ).datepicker({minDate: new Date(), dateFormat: 'yy-mm-dd'});
+            $( "#endtime" ).timepicker({timeFormat: 'HH:mm'});
+        } );
+    </script>
+</head>
+<body>
+<div align="center">
+    <h1>Car Reservation Form</h1>
+
+    <form action="#" method="post" th:action="@{/reserve}" th:object="${reservationData}">
+        <table>
+        <tr>
+            <td><label>Customer Name:</label></td>
+            <td><input id="customername" type="text" th:field="*{customername}" th:value="*{customername}"/></td>
+        </tr>
+        <tr>
+            <td><label>Start Date:</label></td>
+            <td><input id="startdate" type="text" th:field="*{startdate}" th:value="*{startdate}"/></td>
+            <td><label>Start Time:</label></td>
+            <td><input id="starttime" type="text" th:field="*{starttime}" th:value="*{starttime}"/></td>
+        </tr>
+        <tr>
+            <td><label>End Date:</label></td>
+            <td><input id="enddate" type="text" th:field="*{enddate}" th:value="*{enddate}"/></td>
+            <td><label>End Time: </label></td>
+            <td><input id="endtime" type="text" th:field="*{endtime}" th:value="*{endtime}"/></td>
+        </tr>
+        <tr>
+            <td><label>Car Type: </label></td>
+            <td>
+                <select name='CarType'>
+                    <option th:each="ct : ${carTypes}" th:value="${ct}" th:text="${ct}" th:selected="${ct==reservationData.carType}" />
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4" align="center">
+                <button type="submit">Reserve</button>
+            </td>
+        </tr>
+        </table>
+    </form>
+</div>
+
+<div th:if="${reservationData.error}" align="center">
+        <div style="color:red;" th:text="${reservationData.error}"></div>
+</div>
+<div th:if="${reservationData.success}" align="center">
+    <div style="color:green;" th:text="${reservationData.success}"></div>
+</div>
+
+<div align="center">
+
+    <table>
+        <tr>
+            <td valign="top">
+                <table border="'1">
+                    <tr>
+                        <th colspan="2">Car Inventory</th>
+                    </tr>
+                    <tr><th align="'left">Type</th>
+                        <th align="'left">VIN</th>
+                    </tr>
+                    <tr th:each="car : ${cars}">
+                        <td th:text="${car.carType}"></td>
+                        <td th:text="${car.vin}"></td>
+                    </tr>
+                </table>
+            </td>
+            <td valign="top">
+
+                <table border="'1">
+                    <tr>
+                        <th colspan="5">Reservations</th>
+                    </tr>
+                    <tr>
+                        <th align="'left">Start Date/Time</th>
+                        <th align="'left">End Date/Time</th>
+                        <th align="'left">Car Type</th>
+                        <th align="'left">VIN</th>
+                        <th align="'left">Customer</th>
+                    </tr>
+                    <tr th:each="res : ${reservations}">
+                        <td th:text="${res.startDateTime}"></td>
+                        <td th:text="${res.endDateTime}"></td>
+                        <td th:text="${res.car.carType}"></td>
+                        <td th:text="${res.car.vin}"></td>
+                        <td th:text="${res.name}"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

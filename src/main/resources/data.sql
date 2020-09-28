@@ -1,0 +1,24 @@
+insert into car(vin, car_type, reservation_count) values('VIN_VAN1', 'VAN', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_VAN2', 'VAN', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_VAN3', 'VAN', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_SEDAN1', 'SEDAN', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_SEDAN2', 'SEDAN', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_SEDAN3', 'SEDAN', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_SEDAN4', 'SEDAN', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_SUV1', 'SUV', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_SUV2', 'SUV', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_SUV3', 'SUV', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_SUV4', 'SUV', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_SUV5', 'SUV', 0);
+insert into car(vin, car_type, reservation_count) values('VIN_SUV6', 'SUV', 0);
+
+insert into reservation(id, start_date_time, end_date_time, name, car_vin) values(10001, '2020-09-20T09:00', '2020-09-22T17:00', 'Alice James', 'VIN_SEDAN4');
+update car set reservation_count = 1 where vin = 'VIN_SEDAN4';
+insert into reservation(id, start_date_time, end_date_time, name, car_vin) values(10003, '2020-09-19T11:00', '2020-09-23T18:00', 'Ben Frosino', 'VIN_SEDAN2');
+update car set reservation_count = 1 where vin = 'VIN_SEDAN2';
+insert into reservation(id, start_date_time, end_date_time, name, car_vin) values(10004, '2021-11-25T08:30', '2021-11-26T12:00', 'John Smith', 'VIN_SEDAN1');
+update car set reservation_count = 1 where vin = 'VIN_SEDAN1';
+insert into reservation(id, start_date_time, end_date_time, name, car_vin) values(10005, '2021-11-27T08:30', '2021-11-28T23:00', 'Fred Ahern', 'VIN_SEDAN2');
+update car set reservation_count = 2 where vin = 'VIN_SEDAN2';
+insert into reservation(id, start_date_time, end_date_time, name, car_vin) values(10006, '2021-11-25T13:00', '2021-11-30T19:00', 'Jim Larkin', 'VIN_SUV6');
+update car set reservation_count = 1 where vin = 'VIN_SUV6';
