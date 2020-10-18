@@ -1,2 +1,12 @@
 language: java
 jdk: openjdk8
+
+sudo: required
+
+service:
+  - docker
+
+after_success:
+  - docker build -t mperrault/carrental .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push mperrault/carrental
