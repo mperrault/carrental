@@ -14,7 +14,7 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
-  app: multi-docker
+  app: carrental
   env: Carrental-env
   bucket_name: elasticbeanstalk-us-east-2-405500147375
   bucket_path: carrental
@@ -22,4 +22,3 @@ deploy:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
-
