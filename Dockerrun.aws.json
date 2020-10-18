@@ -5,7 +5,7 @@
       "name": "carrental",
       "image": "mperrault/carrental",
       "hostname" : "carrental",
-      "essential": false,
+      "essential": true,
       "memory": 128
     }
   ]
