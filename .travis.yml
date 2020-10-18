@@ -10,3 +10,16 @@ after_success:
   - docker build -t mperrault/carrental .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push mperrault/carrental
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: multi-docker
+  env: carental-env
+  bucket_name: elasticbeanstalk-us-east-2-405500147375
+  bucket_path: carrental
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+
