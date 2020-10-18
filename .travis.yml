@@ -15,7 +15,7 @@ deploy:
   provider: elasticbeanstalk
   region: us-east-2
   app: carrental
-  env: Carrental-env
+  env: Carrental-env-1
   bucket_name: elasticbeanstalk-us-east-2-405500147375
   bucket_path: carrental
   on:
