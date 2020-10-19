@@ -1,12 +1,12 @@
 {
-  "AWSEBDockerrunVersion" : "3",
-  "containerDefinitions": [
+  "AWSEBDockerrunVersion" : "1",
+  "Image": {
+      "name": "mperrault/carrental",
+      "Update": "true"
+  },
+  "Ports": [
     {
-      "name": "carrental",
-      "image": "mperrault/carrental",
-      "hostname" : "carrental",
-      "essential": true,
-      "memory": 128
+      "ContainerPort": "5000"
     }
   ]
 }
