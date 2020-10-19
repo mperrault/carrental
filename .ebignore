@@ -1,4 +1,4 @@
-./Dockerfile
-./pom.xml
-./src
-./target
+Dockerfile
+pom.xml
+/src
+/target
