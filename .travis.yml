@@ -14,10 +14,10 @@ after_success:
 deploy:
   provider: elasticbeanstalk
   region: us-east-2
-  app: carrental
-  env: Carrental-env-1
+  app: carrental2
+  env: Carrental2-env
   bucket_name: elasticbeanstalk-us-east-2-405500147375
-  bucket_path: carrental
+  bucket_path: carrental2
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
