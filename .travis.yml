@@ -10,7 +10,8 @@ after_success:
   - docker build -t mperrault/carrental .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push mperrault/carrental
-  - zip travis.zip Dockerrun.aws.json
+  - pwd
+  - zip /tmp/travis.zip Dockerrun.aws.json
 
 deploy:
   provider: elasticbeanstalk
@@ -19,7 +20,7 @@ deploy:
   env: Carrental2-env
   bucket_name: elasticbeanstalk-us-east-2-405500147375
   bucket_path: carrental2
-  zip_file: travis.zip
+  zip_file: /tmp/travis.zip
   on:
     branch: master
   access_key_id: $AWS_ACCESS_KEY
